@@ -21,7 +21,8 @@ public class PeriodoController {
         return ResponseEntity.ok().body(p);
     }
 
-    /* @GetMapping("/list")
+    /*
+    @GetMapping("/list")
     public List<Periodo> findAll() {
         return periodoService.obtenerPeriodos();
     }

@@ -27,7 +27,7 @@ public class Subactasis {
     private String estado;
     @Column(nullable = false, length = 2)
     private String offlinex;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "evento_id", referencedColumnName = "id", nullable
             = false, foreignKey = @ForeignKey(name = "FK_SUBACTASIS_EVENTO"))
     private Evento eventoId;
