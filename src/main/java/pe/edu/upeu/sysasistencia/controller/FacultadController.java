@@ -27,12 +27,12 @@ public class FacultadController {
         return ResponseEntity.ok().body(f);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Facultad f) {
         facultadService.guardarFacultad(f);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         facultadService.eliminarFacultad(id);
     }

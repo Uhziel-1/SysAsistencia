@@ -27,12 +27,12 @@ public class MaterialesController {
         return ResponseEntity.ok().body(m);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Materiales m) {
         materialesService.guardarMateriales(m);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         materialesService.eliminarMateriales(id);
     }

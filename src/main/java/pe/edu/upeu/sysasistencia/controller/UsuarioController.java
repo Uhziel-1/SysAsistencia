@@ -27,12 +27,12 @@ public class UsuarioController {
         return ResponseEntity.ok().body(u);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Usuario u) {
         usuarioService.guardarUsuario(u);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
     }

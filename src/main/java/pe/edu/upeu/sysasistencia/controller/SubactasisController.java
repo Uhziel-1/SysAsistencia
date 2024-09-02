@@ -27,12 +27,12 @@ public class SubactasisController {
         return ResponseEntity.ok().body(s);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Subactasis s) {
         subactasisService.guardarSubactasis(s);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         subactasisService.eliminarSubactasis(id);
     }

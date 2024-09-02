@@ -27,12 +27,12 @@ public class EventoInscripcionController {
         return ResponseEntity.ok().body(e);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody EventoInscripcion e) {
         eventoInscripcionService.guardarEventoInscripcion(e);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         eventoInscripcionService.eliminarEventoInscripcion(id);
     }

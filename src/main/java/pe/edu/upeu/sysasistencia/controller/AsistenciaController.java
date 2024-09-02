@@ -27,12 +27,12 @@ public class AsistenciaController {
         return ResponseEntity.ok().body(a);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Asistencia a) {
         asistenciaService.guardarAsistencia(a);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         asistenciaService.eliminarAsistencia(id);
     }

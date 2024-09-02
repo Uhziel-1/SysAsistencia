@@ -27,12 +27,12 @@ public class PersonaController {
         return ResponseEntity.ok().body(p);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Persona p) {
         personaService.guardarPersona(p);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         personaService.eliminarPersona(id);
     }

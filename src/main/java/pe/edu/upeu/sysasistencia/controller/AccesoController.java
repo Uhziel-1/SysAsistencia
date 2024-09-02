@@ -27,12 +27,12 @@ public class AccesoController {
         return ResponseEntity.ok().body(a);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Acceso a) {
         accesoService.guardarAcceso(a);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         accesoService.eliminarAcceso(id);
     }

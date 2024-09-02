@@ -27,12 +27,12 @@ public class RolController {
         return ResponseEntity.ok().body(r);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Rol r) {
         rolService.guardarRol(r);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         rolService.eliminarRol(id);
     }

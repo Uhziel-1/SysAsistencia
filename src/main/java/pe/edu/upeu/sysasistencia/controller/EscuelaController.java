@@ -27,12 +27,12 @@ public class EscuelaController {
         return ResponseEntity.ok().body(e);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Escuela e) {
         escuelaService.guardarEscuela(e);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         escuelaService.eliminarEscuela(id);
     }

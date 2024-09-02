@@ -27,12 +27,12 @@ public class EventoController {
         return ResponseEntity.ok().body(e);
     }
 
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Evento e) {
         eventoService.guardarEvento(e);
     }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
         eventoService.eliminarEvento(id);
     }
