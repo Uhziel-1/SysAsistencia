@@ -1,16 +1,29 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Evento;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.EventoRepository;
 import pe.edu.upeu.sysasistencia.service.EventoService;
 
 import java.util.List;
 
 @Service
-public class EventoServiceImp implements EventoService {
+@Transactional
+@RequiredArgsConstructor
+public class EventoServiceImp extends CrudGenericoServiceImp<Evento, Long> implements EventoService {
 
+    private final EventoRepository eventoRepository;
+
+    @Override
+    protected CrudGenericoRepository<Evento, Long> getRepo() {
+        return eventoRepository;
+    }
+
+    /*
     @Autowired
     EventoRepository eventoRepository;
 
@@ -38,4 +51,5 @@ public class EventoServiceImp implements EventoService {
     public void actualizarEvento(Evento evento, Long id) {
         eventoRepository.save(evento);
     }
+     */
 }

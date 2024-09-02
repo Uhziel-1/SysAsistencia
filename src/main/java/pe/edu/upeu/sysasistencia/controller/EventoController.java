@@ -17,23 +17,23 @@ public class EventoController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Evento>> findAll() {
-        List<Evento> e=eventoService.obtenerEventos();
+        List<Evento> e=eventoService.findAll();
         return ResponseEntity.ok().body(e);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Evento> findByAcceso(@PathVariable Long id) {
-        Evento e=eventoService.obtenerEvento(id);
+        Evento e=eventoService.findById(id);
         return ResponseEntity.ok().body(e);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Evento e) {
-        eventoService.guardarEvento(e);
+        eventoService.save(e);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        eventoService.eliminarEvento(id);
+        eventoService.delete(id);
     }
 }

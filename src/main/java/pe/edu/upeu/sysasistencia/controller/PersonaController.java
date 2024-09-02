@@ -17,23 +17,23 @@ public class PersonaController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Persona>> findAll() {
-        List<Persona> p=personaService.obtenerPersonas();
+        List<Persona> p=personaService.findAll();
         return ResponseEntity.ok().body(p);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Persona> findByAcceso(@PathVariable Long id) {
-        Persona p=personaService.obtenerPersona(id);
+        Persona p=personaService.findById(id);
         return ResponseEntity.ok().body(p);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Persona p) {
-        personaService.guardarPersona(p);
+        personaService.save(p);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        personaService.eliminarPersona(id);
+        personaService.delete(id);
     }
 }

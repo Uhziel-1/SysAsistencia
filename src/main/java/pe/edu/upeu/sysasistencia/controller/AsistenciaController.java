@@ -17,23 +17,23 @@ public class AsistenciaController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Asistencia>> findAll() {
-        List<Asistencia> a=asistenciaService.obtenerAsistencias();
+        List<Asistencia> a=asistenciaService.findAll();
         return ResponseEntity.ok().body(a);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Asistencia> findByAcceso(@PathVariable Long id) {
-        Asistencia a=asistenciaService.obtenerAsistencia(id);
+        Asistencia a=asistenciaService.findById(id);
         return ResponseEntity.ok().body(a);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Asistencia a) {
-        asistenciaService.guardarAsistencia(a);
+        asistenciaService.save(a);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        asistenciaService.eliminarAsistencia(id);
+        asistenciaService.delete(id);
     }
 }

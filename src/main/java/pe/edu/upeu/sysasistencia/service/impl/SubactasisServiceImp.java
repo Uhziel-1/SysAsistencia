@@ -1,16 +1,29 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Subactasis;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.SubactasisRepository;
 import pe.edu.upeu.sysasistencia.service.SubactasisService;
 
 import java.util.List;
 
 @Service
-public class SubactasisServiceImp implements SubactasisService {
+@Transactional
+@RequiredArgsConstructor
+public class SubactasisServiceImp extends CrudGenericoServiceImp<Subactasis, Long> implements SubactasisService {
 
+    private final SubactasisRepository subactasisRepository;
+
+    @Override
+    protected CrudGenericoRepository<Subactasis, Long> getRepo() {
+        return subactasisRepository;
+    }
+
+    /*
     @Autowired
     SubactasisRepository subactasisRepository;
 
@@ -38,4 +51,5 @@ public class SubactasisServiceImp implements SubactasisService {
     public void actualizarSubactasis(Subactasis subactasis, Long id) {
         subactasisRepository.save(subactasis);
     }
+     */
 }

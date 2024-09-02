@@ -17,23 +17,23 @@ public class RolController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Rol>> findAll() {
-        List<Rol> r=rolService.obtenerRoles();
+        List<Rol> r=rolService.findAll();
         return ResponseEntity.ok().body(r);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Rol> findByAcceso(@PathVariable Long id) {
-        Rol r=rolService.obtenerRol(id);
+        Rol r=rolService.findById(id);
         return ResponseEntity.ok().body(r);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Rol r) {
-        rolService.guardarRol(r);
+        rolService.save(r);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        rolService.eliminarRol(id);
+        rolService.delete(id);
     }
 }

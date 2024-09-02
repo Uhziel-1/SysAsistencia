@@ -17,23 +17,23 @@ public class EventoInscripcionController {
 
     @GetMapping("/list")
     public ResponseEntity<List<EventoInscripcion>> findAll() {
-        List<EventoInscripcion> e=eventoInscripcionService.obtenerEventoInscripcions();
+        List<EventoInscripcion> e=eventoInscripcionService.findAll();
         return ResponseEntity.ok().body(e);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<EventoInscripcion> findByAcceso(@PathVariable Long id) {
-        EventoInscripcion e=eventoInscripcionService.obtenerEventoInscripcion(id);
+        EventoInscripcion e=eventoInscripcionService.findById(id);
         return ResponseEntity.ok().body(e);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody EventoInscripcion e) {
-        eventoInscripcionService.guardarEventoInscripcion(e);
+        eventoInscripcionService.save(e);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        eventoInscripcionService.eliminarEventoInscripcion(id);
+        eventoInscripcionService.delete(id);
     }
 }

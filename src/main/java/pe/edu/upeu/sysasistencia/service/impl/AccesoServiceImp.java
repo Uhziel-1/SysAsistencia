@@ -1,19 +1,25 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Acceso;
 import pe.edu.upeu.sysasistencia.repository.AccesoRepository;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.service.AccesoService;
 
-import java.util.List;
-
 @Service
-public class AccesoServiceImp implements AccesoService {
+@Transactional
+@RequiredArgsConstructor
+public class AccesoServiceImp extends CrudGenericoServiceImp<Acceso, Long> implements AccesoService {
 
-    @Autowired
-    AccesoRepository accesoRepository;
+    private final AccesoRepository accesoRepository;
 
+    @Override
+    protected CrudGenericoRepository<Acceso, Long> getRepo() {
+        return accesoRepository;
+    }
+/*
     @Override
     public List<Acceso> obtenerAccesos() {
         return accesoRepository.findAll();
@@ -38,4 +44,5 @@ public class AccesoServiceImp implements AccesoService {
     public void actualizarAcceso(Acceso acceso, Long id) {
         accesoRepository.save(acceso);
     }
+ */
 }

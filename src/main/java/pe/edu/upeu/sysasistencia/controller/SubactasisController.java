@@ -17,23 +17,23 @@ public class SubactasisController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Subactasis>> findAll() {
-        List<Subactasis> s=subactasisService.obtenerListaSubactasis();
+        List<Subactasis> s=subactasisService.findAll();
         return ResponseEntity.ok().body(s);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Subactasis> findByAcceso(@PathVariable Long id) {
-        Subactasis s=subactasisService.obtenerSubactasis(id);
+        Subactasis s=subactasisService.findById(id);
         return ResponseEntity.ok().body(s);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Subactasis s) {
-        subactasisService.guardarSubactasis(s);
+        subactasisService.save(s);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        subactasisService.eliminarSubactasis(id);
+        subactasisService.delete(id);
     }
 }

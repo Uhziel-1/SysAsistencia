@@ -1,9 +1,12 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Periodo;
 import pe.edu.upeu.sysasistencia.model.Persona;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.PersonaRepository;
 import pe.edu.upeu.sysasistencia.service.PeriodoService;
 import pe.edu.upeu.sysasistencia.service.PersonaService;
@@ -11,8 +14,18 @@ import pe.edu.upeu.sysasistencia.service.PersonaService;
 import java.util.List;
 
 @Service
-public class PersonaServiceImp implements PersonaService {
+@Transactional
+@RequiredArgsConstructor
+public class PersonaServiceImp extends CrudGenericoServiceImp<Persona, Long> implements PersonaService {
 
+    private final PersonaRepository personaRepository;
+
+    @Override
+    protected CrudGenericoRepository<Persona, Long> getRepo() {
+        return personaRepository;
+    }
+
+    /*
     @Autowired
     PersonaRepository personaRepository;
 
@@ -40,4 +53,5 @@ public class PersonaServiceImp implements PersonaService {
     public void actualizarPersona(Persona persona, Long id) {
         personaRepository.save(persona);
     }
+     */
 }

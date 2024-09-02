@@ -1,16 +1,29 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Rol;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.RolRepository;
 import pe.edu.upeu.sysasistencia.service.RolService;
 
 import java.util.List;
 
 @Service
-public class RolServiceImp implements RolService {
+@Transactional
+@RequiredArgsConstructor
+public class RolServiceImp extends CrudGenericoServiceImp<Rol, Long> implements RolService {
 
+    private final RolRepository rolRepository;
+
+    @Override
+    protected CrudGenericoRepository<Rol, Long> getRepo() {
+        return rolRepository;
+    }
+
+    /*
     @Autowired
     RolRepository rolRepository;
 
@@ -38,4 +51,5 @@ public class RolServiceImp implements RolService {
     public void actualizarRol(Rol rol, Long id) {
         rolRepository.save(rol);
     }
+     */
 }

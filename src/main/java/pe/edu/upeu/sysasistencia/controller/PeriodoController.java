@@ -17,7 +17,7 @@ public class PeriodoController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Periodo>> findAll() {
-        List<Periodo> p=periodoService.obtenerPeriodos();
+        List<Periodo> p=periodoService.findAll();
         return ResponseEntity.ok().body(p);
     }
 
@@ -30,17 +30,17 @@ public class PeriodoController {
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Periodo> findByPerido(@PathVariable Long id) {
-        Periodo p=periodoService.obtenerPeriodo(id);
+        Periodo p=periodoService.findById(id);
         return ResponseEntity.ok().body(p);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Periodo p) {
-        periodoService.guardarPeriodo(p);
+        periodoService.save(p);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        periodoService.eliminarPeriodo(id);
+        periodoService.delete(id);
     }
 }

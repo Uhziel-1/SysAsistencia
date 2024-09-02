@@ -17,23 +17,23 @@ public class AccesoController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Acceso>> findAll() {
-        List<Acceso> a=accesoService.obtenerAccesos();
+        List<Acceso> a=accesoService.findAll();
         return ResponseEntity.ok().body(a);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Acceso> findByAcceso(@PathVariable Long id) {
-        Acceso a=accesoService.obtenerAcceso(id);
+        Acceso a=accesoService.findById(id);
         return ResponseEntity.ok().body(a);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Acceso a) {
-        accesoService.guardarAcceso(a);
+        accesoService.save(a);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        accesoService.eliminarAcceso(id);
+        accesoService.delete(id);
     }
 }

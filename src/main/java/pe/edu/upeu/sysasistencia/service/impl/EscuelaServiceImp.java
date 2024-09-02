@@ -1,16 +1,29 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Escuela;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.EscuelaRepository;
 import pe.edu.upeu.sysasistencia.service.EscuelaService;
 
 import java.util.List;
 
 @Service
-public class EscuelaServiceImp implements EscuelaService {
+@Transactional
+@RequiredArgsConstructor
+public class EscuelaServiceImp extends CrudGenericoServiceImp<Escuela, Long> implements EscuelaService {
 
+    private final EscuelaRepository escuelaRepository;
+
+    @Override
+    protected CrudGenericoRepository<Escuela, Long> getRepo() {
+        return escuelaRepository;
+    }
+
+    /*
     @Autowired
     EscuelaRepository escuelaRepository;
 
@@ -38,4 +51,5 @@ public class EscuelaServiceImp implements EscuelaService {
     public void actualizarEscuela(Escuela escuela, Long id) {
         escuelaRepository.save(escuela);
     }
+     */
 }

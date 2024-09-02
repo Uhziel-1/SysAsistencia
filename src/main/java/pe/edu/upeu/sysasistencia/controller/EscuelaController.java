@@ -17,23 +17,23 @@ public class EscuelaController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Escuela>> findAll() {
-        List<Escuela> e=escuelaService.obtenerEscuelas();
+        List<Escuela> e=escuelaService.findAll();
         return ResponseEntity.ok().body(e);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Escuela> findByAcceso(@PathVariable Long id) {
-        Escuela e=escuelaService.obtenerEscuela(id);
+        Escuela e=escuelaService.findById(id);
         return ResponseEntity.ok().body(e);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Escuela e) {
-        escuelaService.guardarEscuela(e);
+        escuelaService.save(e);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        escuelaService.eliminarEscuela(id);
+        escuelaService.delete(id);
     }
 }

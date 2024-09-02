@@ -1,16 +1,29 @@
 package pe.edu.upeu.sysasistencia.service.impl;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.sysasistencia.model.Facultad;
+import pe.edu.upeu.sysasistencia.repository.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repository.FacultadRepository;
 import pe.edu.upeu.sysasistencia.service.FacultadService;
 
 import java.util.List;
 
 @Service
-public class FacultadServiceImp implements FacultadService {
+@Transactional
+@RequiredArgsConstructor
+public class FacultadServiceImp extends CrudGenericoServiceImp<Facultad, Long> implements FacultadService {
 
+    private final FacultadRepository facultadRepository;
+
+    @Override
+    protected CrudGenericoRepository<Facultad, Long> getRepo() {
+        return facultadRepository;
+    }
+
+    /*
     @Autowired
     FacultadRepository facultadRepository;
 
@@ -38,4 +51,5 @@ public class FacultadServiceImp implements FacultadService {
     public void actualizarFacultad(Facultad facultad, Long id) {
         facultadRepository.save(facultad);
     }
+     */
 }

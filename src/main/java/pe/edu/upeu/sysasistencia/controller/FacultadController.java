@@ -17,23 +17,23 @@ public class FacultadController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Facultad>> findAll() {
-        List<Facultad> f=facultadService.obtenerFacultades();
+        List<Facultad> f=facultadService.findAll();
         return ResponseEntity.ok().body(f);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Facultad> findByAcceso(@PathVariable Long id) {
-        Facultad f=facultadService.obtenerFacultad(id);
+        Facultad f=facultadService.findById(id);
         return ResponseEntity.ok().body(f);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Facultad f) {
-        facultadService.guardarFacultad(f);
+        facultadService.save(f);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        facultadService.eliminarFacultad(id);
+        facultadService.delete(id);
     }
 }

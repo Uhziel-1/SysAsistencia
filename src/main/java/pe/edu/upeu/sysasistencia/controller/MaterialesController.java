@@ -17,23 +17,23 @@ public class MaterialesController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Materiales>> findAll() {
-        List<Materiales> m=materialesService.obtenerListaMateriales();
+        List<Materiales> m=materialesService.findAll();
         return ResponseEntity.ok().body(m);
     }
 
     @GetMapping("/list/{id}")
     public ResponseEntity<Materiales> findByAcceso(@PathVariable Long id) {
-        Materiales m=materialesService.obtenerMateriales(id);
+        Materiales m=materialesService.findById(id);
         return ResponseEntity.ok().body(m);
     }
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Materiales m) {
-        materialesService.guardarMateriales(m);
+        materialesService.save(m);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
-        materialesService.eliminarMateriales(id);
+        materialesService.delete(id);
     }
 }
